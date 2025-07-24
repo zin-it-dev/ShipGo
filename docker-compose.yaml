@@ -1,0 +1,60 @@
+services:
+    react-web:
+        build:
+            context: ./client
+            dockerfile: ./Dockerfile.dev
+        container_name: react-dev
+        volumes:
+            - ./client:/app
+            - /app/node_modules
+        env_file:
+            - ./client/.env
+        ports:
+            - 3000:3000
+        depends_on:
+            - django-web
+
+    django-web:
+        build:
+            context: ./server
+            dockerfile: Dockerfile.dev
+        container_name: django-dev
+        volumes:
+            - ./server:/app
+        ports:
+            - 8000:8000
+        env_file:
+            - ./server/.env
+        depends_on:
+            - elasticsearch
+            - db
+
+    db:
+        image: postgres:17
+        container_name: postgres-dev
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        env_file:
+            - ./server/.env
+        ports:
+            - 5432:5432
+
+    elasticsearch:
+        image: elasticsearch:8.10.1
+        container_name: elasticsearch
+        environment:
+            - discovery.type=single-node
+            - xpack.security.enabled=false
+        volumes:
+            - elasticsearch_data:/usr/share/elasticsearch/data
+        ports:
+            - "9200:9200"
+        healthcheck:
+            test: ["CMD-SHELL", "curl -fsSL http://localhost:9200 || exit 1"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+volumes:
+    postgres_data:
+    elasticsearch_data:
