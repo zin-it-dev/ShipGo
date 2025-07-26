@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router";
 import Home from "@/pages/Home";
 import Details from "@/pages/Details";
 import RootLayout from "@/components/layouts/RootLayout";
+import Login from "@/pages/Login";
 
 const App: React.FC = () => {
     return (
@@ -12,6 +13,8 @@ const App: React.FC = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/courses/:slug" element={<Details />} />
             </Route>
+
+            <Route path="/login" element={<Login />} />
         </Routes>
     );
 };

@@ -1,1 +1,23 @@
 GET http://localhost:8000/courses/search/Home/?page=2 HTTP/1.1
+
+###
+POST http://127.0.0.1:8000/token/ HTTP/1.1
+content-type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "1"
+}
+
+###
+GET http://127.0.0.1:8000/users/current-user/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUzMzYxMDE0LCJpYXQiOjE3NTMzNjA3MTQsImp0aSI6ImQzMmY5YTQ0MjE5ZDRkZjU5ZDU2YTk4ODI0YTJhZjE0IiwidXNlcl9pZCI6IjEifQ.cujLlo4JbhxhTmrYf5rGk_tJjXNWG4E673Q_nbNM-ao
+
+###
+POST http://127.0.0.1:8000/token/refresh/ HTTP/1.1
+content-type: application/json
+
+{
+    "refresh": ""
+}

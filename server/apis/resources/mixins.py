@@ -1,4 +1,9 @@
-from rest_framework import serializers
+import abc
+
+from rest_framework import serializers, viewsets, status
+from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.decorators import action
 
 from ..models import Tag
 
@@ -18,12 +23,7 @@ class TagSerializerMixin(SerializerMixin):
     
     class Meta:
         fields = SerializerMixin.Meta.fields + ['tags']
-
-import abc
-from rest_framework import viewsets, status
-from rest_framework.response import Response
-from rest_framework.pagination import PageNumberPagination
-from rest_framework.decorators import action
+        
 
 class ElasticSearchViewSet(viewsets.GenericViewSet):
     serializer_class = None

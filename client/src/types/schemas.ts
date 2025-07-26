@@ -6,22 +6,26 @@ const Base = z.object({
     isActive: z.boolean(),
 });
 
-type Base = z.infer<typeof Base>;
+type Base = {
+    id: number;
+    slug: string;
+    isActive: boolean;
+};
 
-const Category = z.object({
-    name: z.string(),
-});
+export type Category = Base & {
+    name: string;
+};
 
-export type Category = Base & z.infer<typeof Category>;
-
-const Course = z.object({
-    name: z.string(),
-});
-
-export type Course = Base & z.infer<typeof Course>;
+export type Course = Base & {
+    name: string;
+};
 
 export type Courses = {
     count: number;
     page_size: number;
     results: Pick<Course, "id" | "isActive" | "slug" | "name">[];
+};
+
+export type User = Base & {
+    username: string;
 };

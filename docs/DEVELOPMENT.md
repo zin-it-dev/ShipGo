@@ -31,3 +31,13 @@ docker-compose exec <service_name_django> python manage.py populate --amount 10
 ```bash
 docker-compose exec <service_name_django> python manage.py search_index --rebuild
 ```
+
+Unit test and test coverage
+
+```bash
+docker-compose exec <service_name_django> pytest
+```
+
+```bash
+docker-compose exec <service_name_django> pytest --cov --cov-report=xml
+```

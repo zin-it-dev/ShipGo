@@ -1,8 +1,8 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-
-import type { Course, Courses } from "@/libs/types/schemas";
-import { fetchCourse, fetchCourseList } from "@/services/course.service";
 import { useParams, useSearchParams } from "react-router";
+
+import type { Course, Courses } from "@/types/schemas";
+import { fetchCourse, fetchCourseList } from "@/services/course.service";
 
 export const useCourses = () => {
     const [searchParams] = useSearchParams();

@@ -1,7 +1,7 @@
 import factory
 from factory.faker import Faker
 
-from .models import Category, Course, Lesson
+from ..models import Category, Course, Lesson
 
 
 class CategoryFactory(factory.django.DjangoModelFactory):

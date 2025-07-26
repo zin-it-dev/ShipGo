@@ -1,6 +1,6 @@
 import { ENDPOINTS } from "@/constants/endpoints";
 import axios from "@/libs/configs/axios";
-import type { Course, Courses } from "@/libs/types/schemas";
+import type { Course, Courses } from "@/types/schemas";
 
 export const fetchCourseList = async (
     page: number,

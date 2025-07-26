@@ -3,7 +3,7 @@ import random
 from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ObjectDoesNotExist
 
-from apis.factories import CategoryFactory, CourseFactory, LessonFactory
+from apis.tests.factories import CategoryFactory, CourseFactory, LessonFactory
 
 class Command(BaseCommand):
     help = "Generate fake data and seed the models with them."
