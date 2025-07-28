@@ -1,11 +1,3 @@
-import { z } from "zod";
-
-const Base = z.object({
-    id: z.number(),
-    slug: z.string(),
-    isActive: z.boolean(),
-});
-
 type Base = {
     id: number;
     slug: string;
